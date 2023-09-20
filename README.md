@@ -15,13 +15,19 @@
    git clone <URL репозитория>
    cd ansible-wordpress-deployment
    ```
-2. **Настройка инвентарного файла**:
+   
+2. **Установка необходимых ролей из Ansible Galaxy**:
+   ```bash
+   ansible-galaxy install geerlingguy.mysql
+   ```
+
+3. **Настройка инвентарного файла**:
    Отредактируйте файл `hosts.ini`, указав IP-адрес вашего сервера.
 
-3. **Настройка базы данных**:
+4. **Настройка базы данных**:
    Укажите ваши настройки базы данных в файле `group_vars/webserver/vars.yml`. Для шифрования паролей используйте `ansible-vault`:
 
-   - Установите пароль для `ansible-vault` (лучше всего сохранить его в безопасном месте):
+   - Установите пароль для `ansible-vault`:
      ```bash
      echo "your_vault_password" > vault-password.txt
      ```
@@ -31,21 +37,10 @@
      ```
    - Вставьте зашифрованный результат в ваш файл `group_vars/webserver/vars.yml`.
 
-4. **Запуск playbook**:
+5. **Запуск playbook**:
    ```bash
    ansible-playbook -i hosts.ini wordpress-playbook.yml --ask-vault-pass
    ```
-
-## Использование Ansible Galaxy
-
-Проект использует роль из Ansible Galaxy для установки и настройки MySQL. Для использования этой роли:
-
-1. **Установка роли**:
-   ```bash
-   ansible-galaxy install geerlingguy.mysql
-   ```
-2. **Настройка playbook**:
-   Добавьте роль `geerlingguy.mysql` перед ролью установки Wordpress в файле `wordpress-playbook.yml`.
 
 ## Структура проекта
 
