@@ -1,0 +1,8 @@
+
+---
+- hosts: webserver
+  become: yes
+  roles:
+    - geerlingguy.mysql
+    - wordpress-role
+    

@@ -1,0 +1,9 @@
+
+mysql_root_password: "your_root_password"
+mysql_databases:
+  - name: wordpress_db
+mysql_users:
+  - name: wordpress_user
+    password: "your_db_password"
+    priv: "wordpress_db.*:ALL"
+    
